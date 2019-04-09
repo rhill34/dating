@@ -1,0 +1,12 @@
+{
+  "name": "rhillgre/328/dating",
+  "authors" : [
+    {
+      "name": "Robert Hill",
+      "email" : "rhill34@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
