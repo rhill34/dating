@@ -13,8 +13,7 @@ $f3 = Base::instance();
 //Configure setting for the AUTOLOAD Global
 $f3->config('App/Config/setup.cfg');
 //Configure setting for the Routes
-//Define a default route
-$f3->route('GET /', 'Homepage->index');
+$f3->config('App/Config/routes.cfg');
 
 //Run fat free
 $f3->run();
