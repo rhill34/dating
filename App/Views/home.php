@@ -17,7 +17,7 @@
 <body>
 <!-- The Heading -->
 <nav class="navbar navbar-light bg-light">
-    <a href="#" span class="navbar-brand mb-0 h1">QuickTripIn Website</span></a>
+    <a href="{{@nav}}" span class="navbar-brand mb-0 h1">QuickTripIn Website</span></a>
 </nav>
 <br>
 <!-- Cards Side by Side-->
@@ -33,16 +33,16 @@
                     <div class="text-center" style="margin: 1px;">
                         <p class="font-italic"><small>"When I went to Texas...I found out what Come and Take it means!"</small> - PaperMag</p>
                         <p class="font-italic"><small>"I was able to share my community and not just on social media."
-                        </small>- Reddit
+                            </small>- Reddit
                         </p>
                         <p class="font-italic"><small>"Up Till Now, I'd been traveling and touring all wrong."</small> - Pinterest</p>
                     </div>
                     <hr>
-<!--                    <div class="col-sm-6 mx-auto">-->
-<!--                        <div style="text-align: center;">-->
-<!--                            <button type="button" class="btn btn-primary text-nowrap">Create a Profile!</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="col-sm-6 mx-auto">
+                        <div style="text-align: center;">
+                            <a href="{{@personal}}" role="button" type="button" class="btn btn-primary text-nowrap">Create a Profile!</a>
+                        </div>
+                    </div>
                     <br>
                 </div>
                 <div class="col-sm-6" style="width: 100% ; height: 100%;">

@@ -1,9 +1,14 @@
 <?php
+
 class Profile{
 
-    function pro()
-    {
-        $pro = new Template();
-        echo $pro->render('views/profile.html');
+    public function pro(){
+        echo"TO-DO Profile Page";
+//        $f3=Base::instance();
+//        $view = new Template();
+//        $data = [];
+//        $data['nav'] = $f3->alias('nav_home');
+//        $data['first'] = $f3->alias('info');
+//        echo $view->render('profile.php','text/html', $data);
     }
 }
