@@ -1,3 +1,0 @@
-#Don't track content of these dir
-vendor/
-composer.lock

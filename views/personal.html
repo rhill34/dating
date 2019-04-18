@@ -1,3 +1,10 @@
+<!--
+Title:GRC/IT328/Dating App/personal.html
+Author: Robert Hill, III
+Date: 04.18.2019
+Code Version: V1.0
+Availability: http://rhill.greenriverdev.com/328/datingB/cap
+-->
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -7,6 +14,7 @@
     <title>QuickTrip App</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" lang="en">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -17,42 +25,73 @@
 <body>
 <!-- The Heading -->
 <nav class="navbar navbar-light bg-light">
-    <a href="{{nav_home | alias}}" span class="navbar-brand mb-0 h1">QuickTripIn Website</span></a>
+    <a class="navbar-brand mb-0 h1" href="nav"><span>QuickTripIn Website</span></a>
 </nav>
 <br>
 <!-- Cards Side by Side-->
 <div class="container">
     <div class="col-sm-12">
-        <div class="card" style="width: 100% ;height: 50%; padding: 1%">
-            <h1 class="aTitle" style="padding-top: 1%">Personal Information</h1>
+        <div class="card" id="personalInfoCard">
+            <h1 class="aTitle">Personal Information</h1>
             <hr>
             <div class="row">
-                <div class="col-sm-8" style="width: 100%; height: 100%;">
-                    <form>
+                <!--First Fields-->
+                <div class="col-sm-8" id="personFields">
+                    <!--POST user Inputs from Route-->
+                    <form action="pro" method="post" id="perForm" name="formName" value="Personal Information" >
+                        <!--Get the First Name-->
                         <div class="form-group">
                             <strong><label for="firstName">First Name</label></strong>
-                            <input type="text" class="form-control" id="firstName" aria-describedby="emaisoflHelp" placeholder="Sarah">
-<!--                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                            <input class="form-control" id="firstName" name="uFirst" placeholder="Sarah" type="text">
                         </div>
+                        <!--Get the Last Name-->
                         <div class="form-group">
                             <strong><label for="lastName">Last Name</label></strong>
-                            <input type="text" class="form-control" id="lastName" aria-describedby="emaisoflHelp" placeholder="Smith">
-                            <!--                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                            <input class="form-control" id="lastName" name="uLast" placeholder="Smith" type="text">
                         </div>
+                        <!--Get user Age-->
                         <div class="form-group">
-                            <strong><label for="age">Age</label></strong>
-                            <input type="text" class="form-control" id="age" aria-describedby="emaisoflHelp" placeholder="30">
+                            <strong><label for="example-number-input" class="form-label">Age</label></strong>
+                            <input class="form-control" type="number" placeholder="30" id="example-number-input" name="uAge">
                         </div>
+                        <!--Get user Role-->
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <strong><label for="optionsRadios1" class="form-label">Tripper <em>(*You)</em></label></strong>
+                            <div class="container-fluid" id="roleButtons">
+                                <div class="col-5">
+                                    <div class="row">
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="traveler" checked>Traveler</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="tour">Tour-Guide</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <!--Get user Phone#-->
+                        <div class="form-group">
+                            <strong><label for="example-tel-input" class="form-label">Phone Number</label></strong>
+                            <input class="form-control" id="example-tel-input" name="uNum" type="tel"
+                                   placeholder="222-333-4444">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                </div>
+                <!--Second Fields-->
+                <div class="col-sm-4" id="postPerForm">
+                    <!--EULA -->
+                    <div class="alert alert-secondary" role="alert">
+                        <p class="text-center">
+                            <strong>Note:</strong> All information entered is protected by our <a href="#" class="alert-link">privacy policy</a>. Profile information can only be viewed by others with your permission.
+                        </p>
+                    </div>
+                    <!--SUBMIT POST to Route button-->
+                    <div class="container text-right" style="position: absolute; bottom: 0px; padding-right: 10%;">
+                        <button type="submit" class="btn btn-primary btn-lg" form="perForm">Next></button>
+                    </div>
                 </div>
             </div>
         </div>
