@@ -8,12 +8,13 @@ This assignment will focus on Fat-free routing and templating.
 
 In the last assignment, you created a home page:
 
-![](file:///C:/Users/rhill/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+![first pic](http://rhill.greenriverdev.com/328/dating/images/specs/home.png)
 
 When the user clicks the "Create a Profile!" button, they will be sent through 3 sequential screens to gather profile information: Personal Information --> Profile --> Interests. Each screen allows the user to enter their information and then click on a "Next" button to move to the next screen.
 
 · Personal Information: This screen gathers name, age, gender & phone number.
 
+![alt text](
 ![](file:///C:/Users/rhill/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png)
 
 · Profile: This screen gathers email, state the user is located in, gender interests (seeking) & biography
