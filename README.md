@@ -14,21 +14,19 @@ When the user clicks the "Create a Profile!" button, they will be sent through 3
 
 · Personal Information: This screen gathers name, age, gender & phone number.
 
-![alt text](
-![](file:///C:/Users/rhill/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png)
+![personal](http://rhill.greenriverdev.com/328/dating/images/specs/personalInfo.png)
 
 · Profile: This screen gathers email, state the user is located in, gender interests (seeking) & biography
 
-![](file:///C:/Users/rhill/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png)
+![profile](http://rhill.greenriverdev.com/328/dating/images/specs/profile.png)
 
 · Interests: This screen gathers two types of interests - outdoor & indoor. Use arrays to store the selected checkboxes.
 
-![](file:///C:/Users/rhill/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png)
+![interests](http://rhill.greenriverdev.com/328/dating/images/specs/interests.png)
 
 · Profile Summary: After entering all information into the three forms above, the website should display a summary screen with a Contact Me button. (The Contact Me button doesn't need to do anything at this point.)
 
-![](file:///C:/Users/rhill/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg)
-
+![summary](http://rhill.greenriverdev.com/328/dating/images/specs/Summary.png)
 ### Implementation
 
 #### **Implementation: Styles**
