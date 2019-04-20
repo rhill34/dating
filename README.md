@@ -18,7 +18,7 @@ When the user clicks the "Create a Profile!" button, they will be sent through 3
 
 · Profile: This screen gathers email, state the user is located in, gender interests (seeking) & biography
 
-![profile](http://rhill.greenriverdev.com/328/dating/images/specs/profile.png)
+![profile](http://rhill.greenriverdev.com/328/dating/images/specs/Profile.png)
 
 · Interests: This screen gathers two types of interests - outdoor & indoor. Use arrays to store the selected checkboxes.
 
