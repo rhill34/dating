@@ -111,7 +111,14 @@ $f3->route('POST /sum', function()
     $_SESSION['inDo']  = $_POST['inDo'];
     $_SESSION['outDo'] = $_POST['outDo'];
 
-    $interests            = array_merge($_SESSION['inDo'], $_SESSION['outDo']);
+    if (!(count($_SESSION['inDo']) == 0) && count($_SESSION['outDo']) == 0) {
+        $interests = $_SESSION['inDo'];
+    } elseif ((count($_SESSION['inDo']) == 0) && !count($_SESSION['outDo']) == 0) {
+        $interests = $_SESSION['outDo'];
+    } else {
+        $interests = array_merge($_SESSION['inDo'], $_SESSION['outDo']);
+    }
+
     $interest             = implode(", ", $interests);
     $_SESSION['interest'] = $interest;
 
