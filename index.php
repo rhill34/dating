@@ -115,7 +115,10 @@ $f3->route('POST /sum', function()
         $interests = $_SESSION['inDo'];
     } elseif ((count($_SESSION['inDo']) == 0) && !count($_SESSION['outDo']) == 0) {
         $interests = $_SESSION['outDo'];
-    } else {
+    } elseif ((count($_SESSION['inDo']) == 0) && count($_SESSION['outDo']) == 0) {
+        $interests = [];
+    }
+    else {
         $interests = array_merge($_SESSION['inDo'], $_SESSION['outDo']);
     }
 
