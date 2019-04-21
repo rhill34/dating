@@ -1,0 +1,134 @@
+<!--
+   Title:GRC/IT328/Dating App/profile.html
+   Author: Robert Hill, III
+   Date: 04.20.2019
+   Code Version: V1.0
+   Availability: http://rhill.greenriverdev.com/328/datingB/pro
+   -->
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuickTrip App : Interests</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" lang="en">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- The Heading -->
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand mb-0 h1" href="nav"><span>QuickTrip Website</span></a>
+</nav>
+<br>
+<!-- Cards Side by Side-->
+<div class="container">
+    <div class="col-sm-12">
+        <div class="card" id="personalInfoCard">
+            <h1 class="aTitle">Interests</h1>
+            <hr>
+            <div class="row">
+                <!--Form Fields-->
+                <div class="col-sm-12" id="personFields">
+                    <!--POST user Inputs from Route-->
+                    <form action="sum" method="post" id="proForm">
+                        <!--Get user In-door Interests-->
+                        <div class="form-group">
+                            <p><strong>In-door Interests</strong></p>
+                            <div class="container-fluid" >
+                                <div class="col-10">
+                                    <div class="row">
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input"  name="inDo[]" id="tv" value="tv" >tv</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="inDo[]" id="movies" value="movies">movies</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="inDo[]" id="cooking" value="cooking">cooking</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="inDo[]" id="board_games" value="board games">board games</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input"  name="inDo[]" id="puzzles" value="puzzles" >puzzles</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="inDo[]" id="reading" value="reading">reading</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="inDo[]" id="playing_cards" value="playing cards">playing cards</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="inDo[]" id="video_games" value="video games">video games</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Get user Out-door Interests-->
+                        <div class="form-group">
+                            <p><strong>Out-door Interests</strong></p>
+                            <div class="container-fluid">
+                                <div class="col-10">
+                                    <div class="row">
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input"  name="outDo[]" id="hiking" value="hiking" >hiking</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="outDo[]" id="biking" value="biking">biking</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="outDo[]" id="swimming" value="swimming">swimming</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="outDo[]]" id="collecting" value="collecting">collecting</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input"  name="outDo[]" id="walking" value="walking" >walking</label>
+                                        </div>
+                                        <div class="form-check form-check-inline col">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="outDo[]" id="climbing" value="climbing">climbing</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--SUBMIT POST to Route button-->
+            <div class="container text-right">
+                <button type="submit" class="btn btn-primary btn-lg" form="proForm">Next></button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

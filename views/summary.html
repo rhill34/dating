@@ -1,10 +1,83 @@
+<!--
+   Title:GRC/IT328/Dating App/summary.html
+   Author: Robert Hill, III
+   Date: 04.20.2019
+   Code Version: V1.0
+   Availability: http://rhill.greenriverdev.com/328/datingB/pro
+   -->
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuickTrip App</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" lang="en">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>You ordered {{$_SESSION['food'] }} for {{$_SESSION['meal'] }}</h1>
+<!-- The Heading -->
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand mb-0 h1" href="nav"><span>QuickTripIn Website</span></a>
+</nav>
+<br>
+<!-- Cards Side by Side-->
+<div class="container">
+    <div class="col-sm-10">
+        <div class="card" id="personalInfoCard" style="padding-top: 5%; padding-bottom: 5%;">
+            <div class="row">
+                <!--First Fields-->
+                <div class="col-sm-6" id="personFields">
+                    <div class="container-fluid">
+                        <div class="card" style="width: 100%;">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Name: {{$_SESSION['uFirst'] }} {{$_SESSION['uLast'] }}</li>
+                                <li class="list-group-item">Tripper/Trippee: {{$_SESSION['uRole'] }}</li>
+                                <li class="list-group-item">Age: {{$_SESSION['uAge'] }}</li>
+                                <li class="list-group-item">Phone: {{$_SESSION['uNum'] }}</li>
+                                <li class="list-group-item">Email: {{$_SESSION['uEmail'] }}</li>
+                                <li class="list-group-item">State: {{$_SESSION['uState'] }}</li>
+                                <li class="list-group-item">Seeking Tripper/Trippee: {{$_SESSION['iRole'] }}</li>
+                                <li class="list-group-item">Interests: {{$_SESSION['interest']}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--Second Fields-->
+                <div class="col-sm-6" id="postPerForm">
+                    <!--EULA -->
+                    <!--Get the user Biography-->
+                    <!--                    <div class="col-sm-6">-->
+                    <!--                            <div style="height: 100%; width: 100%;">-->
+                    <div class="mh-100" style="width: 100%; height: 100%;">
+                        <div class="container-fluid">
+                            <img alt="" class="img-fluid rounded" src="images/default-profile.png">
+                        </div>
+                        <h5>Biography</h5>
+                        <!--                            <div class="container-fluid" id="uBio">-->
+                        <div class="container" style="height: 25%;" id="uBio">
+                            <p>{{$_SESSION['uBio'] }}</p>
+                        </div>
+                        <!--                            </div>-->
+                    </div>
+                    <!--                            </div>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+            <!--SUBMIT POST to Route button-->
+            <div class="mx-auto">
+                <button type="submit" class="btn btn-primary btn-lg">Contact Me!</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

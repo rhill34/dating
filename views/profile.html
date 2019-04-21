@@ -53,8 +53,8 @@ Availability: http://rhill.greenriverdev.com/328/datingB/pro
                         </div>
                         <!--Get user Age-->
                         <div class="form-group">
-                            <strong><label for="example-number-input" class="form-label">Age</label></strong>
-                            <input class="form-control" type="number" placeholder="30" id="example-number-input" name="uAge">
+                            <strong><label for="example-number-input" class="form-label"><em>Your</em> Age of Interest</label></strong>
+                            <input class="form-control" type="number" placeholder="30" id="example-number-input" name="iAge">
                         </div>
                         <!--Get user Interest Role-->
                         <div class="form-group">
@@ -64,26 +64,27 @@ Availability: http://rhill.greenriverdev.com/328/datingB/pro
                                     <div class="row">
                                         <div class="form-check form-check-inline col">
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="traveler" checked>Traveler</label>
+                                                <input type="radio" class="form-check-input" name="iRole" id="optionsRadios1" value="traveler" checked>Traveler</label>
                                         </div>
                                         <div class="form-check form-check-inline col">
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="tour">Tour-Guide</label>
+                                                <input type="radio" class="form-check-input" name="iRole" id="optionsRadios2" value="tour">Tour-Guide</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+
                 </div>
                 <!--Second Fields-->
                 <div class="col-sm-6" id="postPerForm">
                     <!--EULA -->
-                    <!--Get the First Name-->
+                    <!--Get the user Biography-->
                     <div class="form-group">
                         <strong><label for="uBio">Biography</label></strong>
                         <textarea class="form-control" id="uBio" name="uBio" placeholder="Quick! Tell us about your Trip in..." type="text" rows="6"></textarea>
                     </div>
+                    </form>
                     <!--SUBMIT POST to Route button-->
                     <div class="container text-right" style="position: absolute; bottom: 0px; padding-right: 10%;">
                         <button type="submit" class="btn btn-primary btn-lg" form="proForm">Next></button>
