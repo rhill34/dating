@@ -75,3 +75,30 @@ Submission
 For this assignment, submit a link to your dating site, and copy the URL of your GitHub repository into the Comments box.
 
 Be sure to carefully review the Grading Rubric in Canvas before submitting your assignment.
+
+# Dating IIB - Data Validation **Due May 5th, 2019**
+
+# **The Dating Assignment: Part IIb**
+
+Overview
+
+In this assignment, you will add data validation and sticky forms to your app.
+
+Specifications
+
+Create a PHP file containing data validation functions and save it to your model folder. Define the following functions:
+
+*   **validName()** checks to see that a string is all alphabetic
+*   **validAge()** checks to see that an age is numeric and between 18 and 118
+*   **validPhone()** checks to see that a phone number is valid (you can decide what constitutes a “valid” phone number)
+*   **validEmail()** checks to see that an email address is valid
+*   **validOutdoor()** checks each selected outdoor interest against a list of valid options
+*   **validIndoor()** checks each selected indoor interest against a list of valid options
+
+Make name, age, phone, and email required fields. Gender, bio, and interests are optional.
+
+In your controller, require the validation file. When each form is submitted, validate the data in that form using the appropriate functions. If there is an error, display an inline error message and redisplay the form data (e.g. make the form sticky). If there are no errors, then store the data in session variables and display the next form.
+
+Submission
+
+For this assignment, submit the URL of your dating site, and copy the URL of your GitHub repository into the Comments section.
