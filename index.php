@@ -3,8 +3,8 @@
  *
  * Title:GRC/IT328/Dating App/index.php
  * Author: Robert Hill III
- * Date: 04.18.2019
- * Code Version: V1.0
+ * Date: 04.18.2019, 05.03.2019
+ * Code Version: V1.1
  * Availability: http://rhill.greenriverdev.com/328/datingB/index.php
  *
  */
@@ -18,6 +18,9 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+
+//Require the business logic
+require_once('model/validation_functions.php');
 
 ////Include static head
 //include('views/head.html');
