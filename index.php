@@ -50,10 +50,34 @@ $f3->route('GET /nav', function()
 });
 
 //Define route to Create a personal info form
-$f3->route('GET /cap', function()
+$f3->route('GET|POST /cap', function($f3)
 {
-    //    echo "<h1>TO-DID Personal information page</h1>";
+    $uFirst = null;
+    $uLast = null;
+    $uAge = null;
+    $uRole = null;
+    $uNum = null;
 
+    if(!empty($_POST))
+    {
+
+        $uFirst = $_POST['uFirst'];
+        $uLast  = $_POST['uLast'];
+        $uAge   = $_POST['uAge'];
+        $uRole  = $_POST['uRole'];
+        $uNum   = $_POST['uNum'];
+
+        $personalForm = array($uFirst,$uLast, );
+
+            print_r($_POST);
+            print_r($personalForm);
+//
+        if(validatePost($personalForm))
+        {
+            $f3->reroute('/inter');
+        }
+
+    }
     //Display a view
     $view = new Template();
     echo $view->render('views/personal.html');
@@ -79,7 +103,7 @@ $f3->route('POST /pro', function()
 
 });
 
-$f3->route('POST /inter', function()
+$f3->route('GET|POST /inter', function()
 {
     //    //Arrange
     //    echo'<p> TO-DID interests page </p>';
