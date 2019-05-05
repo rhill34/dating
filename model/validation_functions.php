@@ -15,6 +15,13 @@ function validatePost($formData)
         $valid = false;
     }
 
+    if(!validAge($formData[2]))
+    {
+        $valid = false;
+    }
+
+
+
     return $valid;
 }
 
@@ -26,4 +33,9 @@ function validatePost($formData)
 function validName($name)
 {
     return !empty($name) && ctype_alpha($name);
+}
+
+function validAge($age)
+{
+    return (!empty($age) && $age >= 18 && $age <= 118 && is_numeric($age));
 }

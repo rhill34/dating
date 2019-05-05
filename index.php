@@ -67,7 +67,7 @@ $f3->route('GET|POST /cap', function($f3)
         $uRole  = $_POST['uRole'];
         $uNum   = $_POST['uNum'];
 
-        $personalForm = array($uFirst,$uLast, );
+        $personalForm = array($uFirst,$uLast, $uAge);
 
             print_r($_POST);
             print_r($personalForm);
