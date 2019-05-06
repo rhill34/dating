@@ -52,11 +52,6 @@ $f3->route('GET /nav', function()
 //Define route to Create a personal info form
 $f3->route('GET|POST /cap', function($f3)
 {
-    $uFirst = null;
-    $uLast = null;
-    $uAge = null;
-    $uRole = null;
-    $uNum = null;
 
     if(!empty($_POST))
     {
@@ -67,13 +62,20 @@ $f3->route('GET|POST /cap', function($f3)
         $uRole  = $_POST['uRole'];
         $uNum   = $_POST['uNum'];
 
-        $personalForm = array($uFirst,$uLast, $uAge);
-
-            print_r($_POST);
-            print_r($personalForm);
+        $f3->set('uFirst',$uFirst);
+        $f3->set('uLast',$uLast);
+        $f3->set('uAge',$uAge);
+        $f3->set('uRole',$uRole);
+        $f3->set('uNum',$uNum);
 //
-        if(validatePost($personalForm))
+        if(validatePost())
         {
+            $_SESSION['uFirst'] = $uFirst;
+            $_SESSION['uLast'] = $uLast;
+            $_SESSION['uAge'] = $uAge;
+            $_SESSION['uRole'] = $uRole;
+            $_SESSION['uNum'] = $uNum;
+
             $f3->reroute('/inter');
         }
 

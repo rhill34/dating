@@ -42,17 +42,29 @@ Availability: http://rhill.greenriverdev.com/328/datingB/cap
                         <!--Get the First Name-->
                         <div class="form-group">
                             <strong><label for="firstName">First Name</label></strong>
-                            <input class="form-control" id="firstName" name="uFirst" placeholder="Sarah" type="text">
+                            <!--Error Check First Name-->
+                            <check if="{{ @errors['uFirst']}}">
+                                <p class="text-warning">{{ @errors['uFirst']}}</p>
+                            </check>
+                            <input class="form-control" id="firstName" name="uFirst" placeholder="Sarah" type="text" value="{{ @uFirst}}" required>
                         </div>
                         <!--Get the Last Name-->
                         <div class="form-group">
                             <strong><label for="lastName">Last Name</label></strong>
-                            <input class="form-control" id="lastName" name="uLast" placeholder="Smith" type="text">
+                            <!--Error Check Last Name-->
+                            <check if="{{ @errors['uLast']}}">
+                                <p class="text-warning">{{ @errors['uLast']}}</p>
+                            </check>
+                            <input class="form-control" id="lastName" value="{{ @uLast }}" name="uLast" placeholder="Smith" type="text" required>
                         </div>
                         <!--Get user Age-->
                         <div class="form-group">
                             <strong><label for="example-number-input" class="form-label"><em>Your</em>Age</label></strong>
-                            <input class="form-control" type="number" placeholder="30" id="example-number-input" name="uAge">
+                            <!--Error Check Age-->
+                            <check if="{{ @errors['uAge']}}">
+                                <p class="text-warning">{{ @errors['uAge']}}</p>
+                            </check>
+                            <input class="form-control" value="{{ @uAge}}" type="number" placeholder="30" id="example-number-input" name="uAge" required>
                         </div>
                         <!--Get user Role-->
                         <div class="form-group">
@@ -62,7 +74,7 @@ Availability: http://rhill.greenriverdev.com/328/datingB/cap
                                     <div class="row">
                                         <div class="form-check form-check-inline col">
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="uRole" id="optionsRadios1" value="traveler">Traveler</label>
+                                                <input type="radio" class="form-check-input" name="uRole" id="optionsRadios1" value="traveler" checked>Traveler</label>
                                         </div>
                                         <div class="form-check form-check-inline col">
                                             <label class="form-check-label">
@@ -75,8 +87,12 @@ Availability: http://rhill.greenriverdev.com/328/datingB/cap
                         <!--Get user Phone#-->
                         <div class="form-group">
                             <strong><label for="example-tel-input" class="form-label">Phone Number</label></strong>
+                            <!--Error Check Last Name-->
+                            <check if="{{ @errors['uNum']}}">
+                                <p class="text-warning">{{ @errors['uNum']}}</p>
+                            </check>
                             <input class="form-control" id="example-tel-input" name="uNum" type="tel"
-                                   placeholder="222-333-4444">
+                                  value="{{ @uNum }}" placeholder="222-333-4444" required>
                         </div>
                     </form>
                 </div>
