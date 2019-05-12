@@ -26,7 +26,7 @@ Availability: http://rhill.greenriverdev.com/328/datingB/pro
 <body>
 <!-- The Heading -->
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand mb-0 h1" href="nav"><span>QuickTrip Website</span></a>
+    <a class="navbar-brand mb-0 h1" href="./"><span>QuickTrip Website</span></a>
 </nav>
 <br>
 <!-- Cards Side by Side-->
@@ -39,22 +39,27 @@ Availability: http://rhill.greenriverdev.com/328/datingB/pro
                 <!--First Fields-->
                 <div class="col-sm-6" id="personFields">
                     <!--POST user Inputs from Route-->
-                    <form action="inter" method="post" id="proForm">
+                    <form action="#" method="post" id="proForm">
                         <!--Get the user Email-->
                         <div class="form-group">
                             <strong><label for="eName">Email</label></strong>
-                            <input class="form-control" id="eName" name="uEmail" placeholder="my_email@gmail.com" type="email">
+                            <check if="{{ @errors['uEmail']}}">
+                                <p class="text-warning">{{ @errors['uEmail']}}</p>
+                            </check>
+                            <input class="form-control" value="{{@uEmail}}"id="eName" name="uEmail" placeholder="my_email@gmail.com" type="email">
                         </div>
                         <!--Get the user State-->
                         <div class="form-group">
                             <strong><label for="lastName">State</label></strong>
-
                             <select class="form-control input-large bfh-states" data-country="US" data-state="WA" id="lastName" name="uState"></select>
                         </div>
                         <!--Get user Age-->
                         <div class="form-group">
                             <strong><label for="example-number-input" class="form-label"><em>Your</em> Age of Interest</label></strong>
-                            <input class="form-control" type="number" placeholder="30" id="example-number-input" name="iAge">
+                            <check if="{{ @errors['iAge']}}">
+                                <p class="text-warning">{{ @errors['iAge']}}</p>
+                            </check>
+                            <input class="form-control" value="{{ @iAge }}" type="number" placeholder="30" id="example-number-input" name="iAge">
                         </div>
                         <!--Get user Interest Role-->
                         <div class="form-group">
@@ -74,22 +79,22 @@ Availability: http://rhill.greenriverdev.com/328/datingB/pro
                                 </div>
                             </div>
                         </div>
-
+                    </form>
                 </div>
                 <!--Second Fields-->
                 <div class="col-sm-6" id="postPerForm">
-                    <!--EULA -->
                     <!--Get the user Biography-->
                     <div class="form-group">
                         <strong><label for="uBio">Biography</label></strong>
-                        <textarea class="form-control" id="uBio" name="uBio" placeholder="Quick! Tell us about your Trip in..." type="text" rows="6"></textarea>
-                    </div>
-                    </form>
-                    <!--SUBMIT POST to Route button-->
-                    <div class="container text-right" style="position: absolute; bottom: 0px; padding-right: 10%;">
-                        <button type="submit" class="btn btn-primary btn-lg" form="proForm">Next></button>
+                        <textarea class="form-control" form="proForm" id="uBio" name="uBio"
+                                  placeholder="Quick! Tell us about your Trip in..." rows="6">
+                        </textarea>
                     </div>
                 </div>
+            </div>
+            <!--SUBMIT POST to Route button-->
+            <div class="container text-right" style="position: absolute; bottom: 0px; padding-right: 3%; padding-bottom: 1%;">
+                <button type="submit" class="btn btn-primary btn-lg" form="proForm">Next></button>
             </div>
         </div>
     </div>

@@ -11,7 +11,13 @@ Availability: http://rhill.greenriverdev.com/328/datingB/styles/styles.css
 
 #personalInfoCard {
     width: 100% ;
-    height: 50%;
+    height: 80%;
+    padding: 2%;
+}
+
+#summaryInfoCard {
+    /*width: 100% ;*/
+    /*height: 100%;*/
     padding: 2%;
 }
 

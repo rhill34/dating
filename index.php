@@ -31,18 +31,16 @@ $f3 = Base::instance();
 //Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
 
+//Define arrays
+$f3->set('in',array('movies','cooking','board games',
+    'puzzles','reading','playing cards','video games'));
+$f3->set('out',array('hiking','biking','swimming',
+    'collecting','walking','climbing'));
+
 //Define a default route
 $f3->route('GET /', function()
 {
-    //Display a view
-    $view = new Template();
-    echo $view->render('views/home.html');
-
-});
-
-//Define route to link nav bar back to home page
-$f3->route('GET /nav', function()
-{
+    session_destroy();
     //Display a view
     $view = new Template();
     echo $view->render('views/home.html');
@@ -61,12 +59,14 @@ $f3->route('GET|POST /cap', function($f3)
         $uAge   = $_POST['uAge'];
         $uRole  = $_POST['uRole'];
         $uNum   = $_POST['uNum'];
+        $premium = $_POST['premium'];
 
         $f3->set('uFirst',$uFirst);
         $f3->set('uLast',$uLast);
         $f3->set('uAge',$uAge);
         $f3->set('uRole',$uRole);
         $f3->set('uNum',$uNum);
+        $f3->set('premium',$premium);
 //
         if(validatePost())
         {
@@ -75,8 +75,9 @@ $f3->route('GET|POST /cap', function($f3)
             $_SESSION['uAge'] = $uAge;
             $_SESSION['uRole'] = $uRole;
             $_SESSION['uNum'] = $uNum;
+            $_SESSION['premium'] = $premium;
 
-            $f3->reroute('/inter');
+            $f3->reroute('/pro');
         }
 
     }
@@ -87,62 +88,81 @@ $f3->route('GET|POST /cap', function($f3)
 });
 
 //Define route to Create a personal info form
-$f3->route('POST /pro', function()
+$f3->route('GET|POST /pro', function($f3)
 {
-    //  //Test
-    //    echo "Personal Info";
-    //    print_r($_POST);
-    $_SESSION['uFirst'] = $_POST['uFirst'];
-    $_SESSION['uLast']  = $_POST['uLast'];
-    $_SESSION['uAge']   = $_POST['uAge'];
-    $_SESSION['uRole']  = $_POST['uRole'];
-    $_SESSION['uNum']   = $_POST['uNum'];
-    //    print_r($_SESSION);
+    if (!empty($_POST)) {
+        $uEmail = $_POST['uEmail'];
+        $uState = $_POST['uState'];
+        $iAge = $_POST['iAge'];
+        $iRole = $_POST['iRole'];
+        $uBio = $_POST['uBio'];
 
-    //Display a view
-    $view = new Template();
-    echo $view->render('views/profile.html');
+        $f3->set('uEmail', $uEmail);
+        $f3->set('uState', $uState);
+        $f3->set('iAge', $iAge);
+        $f3->set('iRole', $iRole);
+        $f3->set('uBio', $uBio);
+//
+        if (validateSeeking()) {
+            $_SESSION['uEmail'] = $uEmail;
+            $_SESSION['uState'] = $_POST['uState'];
+            $_SESSION['iAge'] = $iAge;
+            $_SESSION['iRole'] = $_POST['iRole'];
+            $_SESSION['uBio'] = $uBio;
 
+            if(!empty($_SESSION['premium']))
+            {
+                $f3->reroute('/inter');
+            }
+
+            $f3->reroute('/sum');
+        }
+    }
+        //Display a view
+        $view = new Template();
+        echo $view->render('views/profile.html');
 });
 
-$f3->route('GET|POST /inter', function()
+$f3->route('GET|POST /inter', function($f3)
 {
     //    //Arrange
     //    echo'<p> TO-DID interests page </p>';
     //
     //    //Test
-    //    print_r($_SESSION);
     //    echo "<h1>Profile Info</h1>";
     //    print_r($_POST);
 
-    $_SESSION['uEmail'] = $_POST['uEmail'];
-    $_SESSION['uState'] = $_POST['uState'];
-    $_SESSION['iAge']   = $_POST['iAge'];
-    $_SESSION['iRole']  = $_POST['iRole'];
-    $_SESSION['uBio']   = $_POST['uBio'];
 
+    if(!empty($_POST))
+    {
+        $in = $_POST['inDo'];
+        $out = $_POST['outDo'];
 
+        $f3->set('inPic', $in);
+        $f3->set('outPic',$out);
+
+        if(validInterests())
+        {
+            $_SESSION['inDo'] = $in ;
+            $_SESSION['outDo'] = $out;
+
+            $f3->reroute('/sum');
+        }
+    }
     //Display a view
     $view = new Template();
     echo $view->render('views/interests.html');
 
 });
 
-$f3->route('POST /sum', function()
+$f3->route('GET|POST /sum', function()
 {
-    //    //Arrange
-    //    echo'<p> TO-DID summary page </p>';
-    ////
-    //    //Test
-    //      print_r($_SESSION);
-    ////    echo "<h1>Interests Info</h1>";
-    ///     print_r($_POST);
-    $_SESSION['inDo']  = $_POST['inDo'];
-    $_SESSION['outDo'] = $_POST['outDo'];
+//    $_SESSION['inDo']  = $_POST['inDo'];
+//    $_SESSION['outDo'] = $_POST['outDo'];
 
     if (!(count($_SESSION['inDo']) == 0) && count($_SESSION['outDo']) == 0) {
         $interests = $_SESSION['inDo'];
-    } elseif ((count($_SESSION['inDo']) == 0) && !count($_SESSION['outDo']) == 0) {
+    } elseif ((count($_SESSION['inDo']) == 0) && !(count($_SESSION['outDo'])) == 0) {
         $interests = $_SESSION['outDo'];
     } elseif ((count($_SESSION['inDo']) == 0) && count($_SESSION['outDo']) == 0) {
         $interests = [];

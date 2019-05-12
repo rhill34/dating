@@ -25,7 +25,7 @@ Availability: http://rhill.greenriverdev.com/328/datingB/cap
 <body>
 <!-- The Heading -->
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand mb-0 h1" href="nav"><span>QuickTrip Website</span></a>
+    <a class="navbar-brand mb-0 h1" href="./"><span>QuickTrip Website</span></a>
 </nav>
 <br>
 <!-- Cards Side by Side-->
@@ -93,6 +93,20 @@ Availability: http://rhill.greenriverdev.com/328/datingB/cap
                             </check>
                             <input class="form-control" id="example-tel-input" name="uNum" type="tel"
                                   value="{{ @uNum }}" placeholder="222-333-4444" required>
+                        </div>
+                        <!--Get user Premium#-->
+                        <div class="form-group">
+                            <strong><label for="premium" class="form-label">Premium Membership</label></strong>
+                            <div class="form-check form-check-inline col">
+                                <label class="form-check-label">
+                                    <input type="checkbox"
+                                           class="form-check-input"
+                                           name="premium"
+                                           id="premium"
+                                           value="premium" >
+                                    Sign me up for a Premium Account!
+                                </label>
+                            </div>
                         </div>
                     </form>
                 </div>
