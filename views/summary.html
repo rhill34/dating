@@ -40,13 +40,14 @@
                         <div class="container-fluid">
                             <div class="card" style="width: 100%;">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Name: {{$_SESSION['uFirst'] }} {{$_SESSION['uLast'] }}</li>
-                                    <li class="list-group-item">Tripper/Trippee: {{$_SESSION['uRole'] }}</li>
-                                    <li class="list-group-item">Age: {{$_SESSION['uAge'] }}</li>
-                                    <li class="list-group-item">Phone: {{$_SESSION['uNum'] }}</li>
-                                    <li class="list-group-item">Email: {{$_SESSION['uEmail'] }}</li>
-                                    <li class="list-group-item">State: {{$_SESSION['uState'] }}</li>
-                                    <li class="list-group-item">Seeking Tripper/Trippee: {{$_SESSION['iRole'] }}</li>
+                                    <li class="list-group-item">Name: {{ @member->getFname() }} {{@member->getLname() }}</li>
+                                    <li class="list-group-item">Tripper/Trippee: {{@member->getGender() }}</li>
+                                    <li class="list-group-item">Age: {{ @member->getAge() }}</li>
+                                    <li class="list-group-item">Phone: {{ @member->getPhone() }}</li>
+                                    <li class="list-group-item">Email: {{@member->getEmail() }}</li>
+                                    <li class="list-group-item">State: {{@member->getState() }}</li>
+                                    <li class="list-group-item">Seeking Tripper/Trippee: {{ @member->getSeeking() }}
+                                        around the age of {{ @member->getInterestAge() }}</li>
                                 <check if="{{ @SESSION['premium'] }}">
                                     <li class="list-group-item">Interests: {{$_SESSION['interest']}}</li>
                                 </check>
@@ -63,7 +64,7 @@
                                 <div class="container" style="height: 150px;">
                                     <h5>Biography</h5>
                                     <div class="mh-100">
-                                        {{ $_SESSION['uBio'] }}
+                                        <p>{{ @member->getBio() }}</p>
     <!--                                    <p>{{ $_SESSION['uBio'] }}</p>-->
                                     </div>
 

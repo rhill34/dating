@@ -9,8 +9,7 @@
  *
  */
 
-//Start session
-session_start();
+
 
 // Turn on error reporting
 ini_set('display_errors', 1);
@@ -18,6 +17,9 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+
+//Start session
+session_start();
 
 //Require the business logic
 require_once('model/validation_functions.php');
@@ -51,8 +53,7 @@ $f3->route('GET /', function()
 $f3->route('GET|POST /cap', function($f3)
 {
 
-    if(!empty($_POST))
-    {
+    if(!empty($_POST)) {
 
         $uFirst = $_POST['uFirst'];
         $uLast  = $_POST['uLast'];
@@ -60,6 +61,7 @@ $f3->route('GET|POST /cap', function($f3)
         $uRole  = $_POST['uRole'];
         $uNum   = $_POST['uNum'];
         $premium = $_POST['premium'];
+        $member = null;
 
         $f3->set('uFirst',$uFirst);
         $f3->set('uLast',$uLast);
@@ -68,14 +70,24 @@ $f3->route('GET|POST /cap', function($f3)
         $f3->set('uNum',$uNum);
         $f3->set('premium',$premium);
 //
-        if(validatePost())
-        {
+        if(validatePost()) {
             $_SESSION['uFirst'] = $uFirst;
             $_SESSION['uLast'] = $uLast;
             $_SESSION['uAge'] = $uAge;
             $_SESSION['uRole'] = $uRole;
             $_SESSION['uNum'] = $uNum;
             $_SESSION['premium'] = $premium;
+
+            if(empty($premium)){
+                //Create a Member if Premium is not chose
+                $member = new Member($uFirst, $uLast,$uAge, $uRole,$uNum);
+            }
+            elseif (!empty($premium)){
+                //Create a Premium Member
+                $member = new PremiumMember($uFirst, $uLast,$uAge, $uRole,$uNum);
+            }
+
+            $_SESSION['member'] = $member;
 
             $f3->reroute('/pro');
         }
@@ -96,6 +108,7 @@ $f3->route('GET|POST /pro', function($f3)
         $iAge = $_POST['iAge'];
         $iRole = $_POST['iRole'];
         $uBio = $_POST['uBio'];
+        $member = null;
 
         $f3->set('uEmail', $uEmail);
         $f3->set('uState', $uState);
@@ -110,11 +123,19 @@ $f3->route('GET|POST /pro', function($f3)
             $_SESSION['iRole'] = $_POST['iRole'];
             $_SESSION['uBio'] = $uBio;
 
-            if(!empty($_SESSION['premium']))
-            {
+            $member = $_SESSION['member'];
+                $member->setEmail($uEmail);
+                $member->setState($_POST['uState']);
+                $member->setInterestAge($iAge);
+                $member->setSeeking($_POST['iRole']);
+                $member->setBio($uBio);
+            $_SESSION['member'] = $member;
+
+            if(!empty($_SESSION['premium'])) {
                 $f3->reroute('/inter');
             }
-
+            var_dump($_SESSION['premium']);
+//            print_r($member);
             $f3->reroute('/sum');
         }
     }
@@ -131,7 +152,7 @@ $f3->route('GET|POST /inter', function($f3)
     //    //Test
     //    echo "<h1>Profile Info</h1>";
     //    print_r($_POST);
-
+    $member = null;
 
     if(!empty($_POST))
     {
@@ -146,6 +167,13 @@ $f3->route('GET|POST /inter', function($f3)
             $_SESSION['inDo'] = $in ;
             $_SESSION['outDo'] = $out;
 
+
+            //Get Premium Member
+            $member = $_SESSION['member'];
+                $member->setInDoorInterests($in);
+                $member->setOutDoorInterests($out);
+            $_SESSION['member'] = $member;
+
             $f3->reroute('/sum');
         }
     }
@@ -155,25 +183,41 @@ $f3->route('GET|POST /inter', function($f3)
 
 });
 
-$f3->route('GET|POST /sum', function()
+$f3->route('GET|POST /sum', function($f3)
 {
 //    $_SESSION['inDo']  = $_POST['inDo'];
 //    $_SESSION['outDo'] = $_POST['outDo'];
 
-    if (!(count($_SESSION['inDo']) == 0) && count($_SESSION['outDo']) == 0) {
-        $interests = $_SESSION['inDo'];
-    } elseif ((count($_SESSION['inDo']) == 0) && !(count($_SESSION['outDo'])) == 0) {
-        $interests = $_SESSION['outDo'];
-    } elseif ((count($_SESSION['inDo']) == 0) && count($_SESSION['outDo']) == 0) {
-        $interests = [];
-    }
-    else {
-        $interests = array_merge($_SESSION['inDo'], $_SESSION['outDo']);
-    }
+    $member = null;
 
-    $interest             = implode(", ", $interests);
+    //Get Member info
+    $member = $_SESSION['member'];
+    $interest = null;
+    if($member instanceof PremiumMember) {
+        if (!(count($member->getInDoorInterests()) == 0)
+            && count($member->getOutDoorInterests()) == 0) {
+
+            $interests = $member->getInDoorInterests();
+
+        } elseif (count($member->getInDoorInterests()) == 0
+            && !(count($member->getOutDoorInterests()) == 0)) {
+
+            $interests = $member->getOutDoorInterests();
+
+        } elseif ((count($member->getInDoorInterests()) == 0)
+            && count($member->getOutDoorInterests()) == 0) {
+            $interests = [];
+        }
+        else {
+            $interests = array_merge($member->getInDoorInterests(), $member->getOutDoorInterests());
+        }
+
+        $interest             = implode(", ", $interests);
+    }
     $_SESSION['interest'] = $interest;
 
+
+    $f3->set('member',$member);
     //Display a view
     $view = new Template();
     echo $view->render('views/summary.html');
